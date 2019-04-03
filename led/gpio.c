@@ -80,13 +80,13 @@ static int rasie_priviledge() {
     }
     cap_value = CAP_DAC_OVERRIDE;
     if (cap_set_flag(caps, CAP_EFFECTIVE, 1, &cap_value, CAP_SET) == -1) {
-        return -1;
+        return -2;
     }
     if (cap_set_proc(caps) == -1) {
-        return -1;
+        return -3;
     }
     if (cap_free(caps) == -1) {
-        return -1;
+        return -4;
     }
     return 0;
 }
@@ -100,12 +100,13 @@ int gpio_open(cepton_gpio_t* const gpio_s) {
         fprintf(stderr, "Selected gpio pin not valid\n");
         return -1;
     }
-
-    if (rasie_priviledge() != 0) {
+    int erro;
+    if (erro = rasie_priviledge() != 0) {
         fprintf(stderr, "FAiled to raise priviledge\n");
+        fprintf(stderr, "erro number: %d\n", erro);
     }
 
-    int erro;
+    
     erro = set_gpio_export(gpio_s->gpio, true);
     if (erro != 0) {
         fprintf(stderr, "Erro exporting GPIO pin %d\n", gpio_s->gpio);
