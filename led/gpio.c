@@ -76,16 +76,20 @@ static int rasie_priviledge() {
     }
     caps = cap_get_proc();
     if (caps == NULL) {
+        fprintf(stderr, "cap_get_proc failed\n");
         return -1;
     }
     cap_value = CAP_DAC_OVERRIDE;
     if (cap_set_flag(caps, CAP_EFFECTIVE, 1, &cap_value, CAP_SET) == -1) {
+        fprintf(stderr, "cap_set_flag failed\n");
         return -2;
     }
     if (cap_set_proc(caps) == -1) {
+        fprintf(stderr, "cep_set_proc failed\n");
         return -3;
     }
     if (cap_free(caps) == -1) {
+        fprintf(stderr, "cep_free failed\n");
         return -4;
     }
     return 0;
