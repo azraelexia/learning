@@ -11,7 +11,7 @@ int main(void) {
     int erro = gpio_open(&pio);
     if (erro != 0) {
         fprintf(stderr, "Failed to open GPIO\n");
-        fprintf(stderr, "erro num: %d\n");
+        fprintf(stderr, "erro num: %d\n", erro);
         return -1;
     }
     gpio_write(pio, 1);

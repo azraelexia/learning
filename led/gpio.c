@@ -105,10 +105,10 @@ int gpio_open(cepton_gpio_t* const gpio_s) {
         return -1;
     }
     int erro;
-    if (erro = rasie_priviledge() != 0) {
-        fprintf(stderr, "FAiled to raise priviledge\n");
-        fprintf(stderr, "erro number: %d\n", erro);
-    }
+    // if (erro = rasie_priviledge() != 0) {
+    //     fprintf(stderr, "FAiled to raise priviledge\n");
+    //     fprintf(stderr, "erro number: %d\n", erro);
+    // }
 
     
     erro = set_gpio_export(gpio_s->gpio, true);
