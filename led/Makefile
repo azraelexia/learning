@@ -1,3 +1,10 @@
+CC=clang
+
 
 default:
-	gcc gpio.c gpio_test.c -lcap -o a.out
+	$(CC) gpio.c gpio_test.c -o a.out
+	sudo setcap cap_dac_override=pe a.out
+
+debug:
+	$(CC) $(SRC) -g -o test
+	sudo setcap cap_dac_override=pe test
