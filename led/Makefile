@@ -2,8 +2,8 @@ CC=clang
 
 
 default:
-	$(CC) gpio.c gpio_test.c -o a.out
-	sudo setcap cap_dac_override=pe a.out
+	$(CC) serial.c led_serial_test.c -o a.out
+	
 
 debug:
 	$(CC) $(SRC) -g -o test
