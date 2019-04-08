@@ -1,8 +1,8 @@
 CC=clang
-
+SRC=serial.c led_test.c
 
 default:
-	$(CC) serial.c led_serial_test.c -o a.out
+	$(CC) serial.c led_test.c -o a.out
 	
 
 debug:

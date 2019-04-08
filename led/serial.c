@@ -88,5 +88,7 @@ int serial_close(int fd) {
 }
 
 int serial_send(int fd, void *buff, int size) {
-    return write(fd, buff, size);
+    for (int i = size - 1; i >= 0; ++i) {
+        write(fd, buff[i], 1);
+    }
 }
